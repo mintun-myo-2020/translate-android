@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/firstFragment"
+        android:id="@+id/homeButton"
         android:title="Home"
         android:icon="@drawable/home_icon"/>
 
     <item
-        android:id="@+id/secondFragment"
+        android:id="@+id/savedButton"
         android:title="Saved"
         android:icon="@drawable/fav_icon" />
 

@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         startButton.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
     }
