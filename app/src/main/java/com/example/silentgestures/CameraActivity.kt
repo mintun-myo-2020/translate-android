@@ -95,6 +95,11 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
         setUpCamera()
     }
 
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(0, 0);
+    }
+
 
 
     // Initialize CameraX, and prepare to bind the camera use cases

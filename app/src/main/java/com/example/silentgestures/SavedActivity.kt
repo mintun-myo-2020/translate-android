@@ -46,6 +46,11 @@ class SavedActivity : AppCompatActivity() {
         getVideoFiles()
     }
 
+    override fun onPause() {
+        super.onPause()
+        overridePendingTransition(0, 0);
+    }
+
     private fun getVideoFiles() {
         Log.d("lifecycle savedfragment", "getVideoFiles")
         val mediaDir = externalMediaDirs?.firstOrNull()?.let{
