@@ -11,9 +11,4 @@
         android:title="Saved"
         android:icon="@drawable/fav_icon" />
 
-    <item
-        android:id="@+id/thirdFragment"
-        android:title="Settings"
-        android:icon="@drawable/settings_icon"/>
-
 </menu>
