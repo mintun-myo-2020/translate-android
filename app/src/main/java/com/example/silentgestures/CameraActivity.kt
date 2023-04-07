@@ -343,7 +343,7 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
             if(textLabel !in prevWord!!){
                 words.add(textLabel)
                 for(word in words){
-                    showWords = (showWords + word)
+                    showWords = "$showWords$word "
 
                     // when camera is recording -> append the words
                     if (buttonRecord.text== getString(R.string.stop_recording)) {

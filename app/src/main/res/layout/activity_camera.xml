@@ -11,8 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/toolbar_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -24,10 +22,9 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="732dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_layout"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" >
 
         <androidx.camera.view.PreviewView
             android:id="@+id/view_finder"
@@ -39,18 +36,14 @@
             android:id="@+id/overlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-        <include
-            android:id="@+id/bottom_sheet_layout"
-            layout="@layout/info_bottom_sheet"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="?attr/actionBarSize" />
-
-
     </FrameLayout>
 
+    <include
+        android:id="@+id/bottom_sheet_layout"
+        layout="@layout/info_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -58,8 +51,6 @@
         android:layout_height="wrap_content"
         android:background="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_menu"
         />
 
