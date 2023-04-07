@@ -136,9 +136,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun navigateToCamera() {
 //        Log.d("lifecycle camera", "lifecycle camera")
+//        val startButton = findViewById<Button>(R.id.startButton)
+
+//        startButton.setOnClickListener {
+        Thread.sleep(500)
+        val intent = Intent(this, CameraActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+//        }
+
         val startButton = findViewById<Button>(R.id.startButton)
 
         startButton.setOnClickListener {
+            Thread.sleep(500)
             val intent = Intent(this, CameraActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
