@@ -28,61 +28,47 @@
     app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:orientation="vertical"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tvBottomSheet"
-                android:layout_width="171dp"
-                android:layout_height="23dp"
-                android:text="Translation appears here!"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buttonRecord"
-                app:layout_constraintHorizontal_bias="0.372"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.39" />
-
-            <Button
-                android:id="@+id/buttonRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="110dp"
-                android:text="@string/start_recording"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvBottomSheet"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="184dp"
+            android:text="Translation appears here!"/>
 
 <!--            <Button-->
 <!--                android:id="@+id/buttonRecord"-->
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:layout_alignParentEnd="true"-->
-<!--                android:layout_marginTop="0dp"-->
-<!--                android:layout_marginRight="0dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginRight="110dp"-->
 <!--                android:text="@string/start_recording"-->
 <!--                app:layout_constraintEnd_toEndOf="parent"-->
 <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/buttonRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/start_recording"/>
 
             <Button
                 android:id="@+id/buttonClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="16dp"
-                android:text="CLEAR"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+                android:text="CLEAR"/>
+        </LinearLayout>
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>

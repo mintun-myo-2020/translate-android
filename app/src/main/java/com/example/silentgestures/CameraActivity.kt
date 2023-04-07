@@ -1,6 +1,5 @@
 package com.example.silentgestures
 
-//import android.R
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -99,8 +98,6 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
         super.onPause()
         overridePendingTransition(0, 0);
     }
-
-
 
     // Initialize CameraX, and prepare to bind the camera use cases
     private fun setUpCamera() {
@@ -346,7 +343,7 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
             if(textLabel !in prevWord!!){
                 words.add(textLabel)
                 for(word in words){
-                    showWords = (showWords + " " + word)
+                    showWords = (showWords + word)
 
                     // when camera is recording -> append the words
                     if (buttonRecord.text== getString(R.string.stop_recording)) {

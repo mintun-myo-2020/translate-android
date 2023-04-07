@@ -26,7 +26,8 @@
     <ListView
         android:id="@+id/lvSavedVideo"
         android:layout_width="match_parent"
-        android:layout_height="660dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
