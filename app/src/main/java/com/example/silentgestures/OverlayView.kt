@@ -1,5 +1,6 @@
-package com.example.silentgestures
+// Adapted from TensorFlow https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android
 
+package com.example.silentgestures
 
 import android.content.Context
 import android.graphics.Canvas
@@ -8,11 +9,7 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.RectF
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import java.util.LinkedList
 import kotlin.math.max
@@ -102,10 +99,7 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         var textLabel = ""
         for (result in results) {
             textLabel = result.categories[0].label
-            Log.d("CHECK textLabel: ", "$textLabel")
-
         }
-
 
         // PreviewView is in FILL_START mode. So we need to scale up the bounding box to match with
         // the size that the captured images will be displayed.
