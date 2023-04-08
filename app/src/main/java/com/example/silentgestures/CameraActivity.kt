@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -40,22 +39,17 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
     private lateinit var cameraExecutor: ExecutorService
     private var videoCapture: VideoCapture? = null
     private lateinit var buttonRecord: Button
-    private val REQUEST_CODE_PERMISSIONS = 1001
-
 
     private var showWords:String? = ""
     private var prevWord:String? = ""
     private var words = ArrayList<String>()
-//    private var words = arrayListOf("")
 
-    private val txtFileName = ""
     private lateinit var outputStream: FileOutputStream
     private var appendWords:String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_camera)
-//        Log.d("lifecycle oncreate", "lifecycle oncreate")
 
         // set navigation listener
         val navBar = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
@@ -79,7 +73,6 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
         buttonRecord = findViewById(R.id.buttonRecord)
         buttonRecord.setOnClickListener {
             toggleVideoRecording()
-            Log.d("FragmentLifecycle1", "buttonRecord Clicked")
         }
 
         objectDetectorHelper = ObjectDetectorHelperClass(
@@ -88,7 +81,6 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
 
         // Initialize our background executor
         cameraExecutor = Executors.newSingleThreadExecutor()
-
 
         // Set up the camera and its use cases
         setUpCamera()
@@ -134,7 +126,6 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
                 .build()
 
         // ImageAnalysis. Using RGBA 8888 to match how our models work
-        Log.d("lifecycle checkimage", "lifecycle checkimage")
         imageAnalyzer =
             ImageAnalysis.Builder()
                 .setTargetAspectRatio(AspectRatio.RATIO_4_3)
@@ -154,7 +145,6 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
                                 Bitmap.Config.ARGB_8888
                             )
                         }
-//                        Log.d("lifecycle imagedetect1", "lifecycle imagedetect")
                         detectObjects(image)
                     }
                 }
@@ -220,7 +210,6 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
                 if (videoCapture == null) {
                     return
                 }
-                Log.d("lifecycle Recording", "lifecycle Recording")
                 videoCapture?.startRecording(
                     outputFileOptions,
                     cameraExecutor,
@@ -233,8 +222,6 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
                                     Toast.LENGTH_SHORT
                                 ).show()
 
-                                Log.d("lifecycle videosaved", "lifecycle videosaved")
-
                                 // Convert mp4 to gif
                                 val gifFilePath =
                                     file.absolutePath.substringBeforeLast(".") + ".gif"
@@ -246,11 +233,8 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
                                 )
                                 outputStream = FileOutputStream(txtFile, true)
 
-                                // appendWords += file.name + System.lineSeparator()
-                                Log.d("CHECK words APPEND", "$appendWords")
-
                                 // the file is in Device File Explorer
-                                // data/data/org.tensorflow.lite.examples.objectdetection/files
+                                // data/data/com.examples.silentgestures/files
                                 outputStream?.write(appendWords?.toByteArray())
                                 appendWords = ""
                             }
@@ -317,7 +301,6 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
         imageWidth: Int
     ) {
         runOnUiThread {
-//            var overlay = OverlayView(this, null)
             var overlay = findViewById<OverlayView>(R.id.overlay)
             // Pass necessary information to OverlayView for drawing on the canvas
             var textLabel = overlay.setResults(
@@ -329,16 +312,11 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
             // Force a redraw
             overlay.invalidate()
 
-            // display the text detected
-            Log.d("CHECK words FIRST", "$words")
-
             if(words.size==0){
                 prevWord = ""
             } else {
                 prevWord = words.last()
             }
-
-            Log.d("CHECK prevWord", "$prevWord")
 
             if(textLabel !in prevWord!!){
                 words.add(textLabel)
@@ -369,7 +347,5 @@ class CameraActivity : AppCompatActivity(), ObjectDetectorHelperClass.DetectorLi
             Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
         }
     }
-
-
 
 }

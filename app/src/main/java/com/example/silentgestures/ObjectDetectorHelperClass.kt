@@ -1,25 +1,11 @@
-/*
- * Copyright 2022 The TensorFlow Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *             http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Adapted from TensorFlow https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android
+
 package com.example.silentgestures
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.SystemClock
 import android.util.Log
-import com.example.silentgestures.CameraActivity
 import org.tensorflow.lite.gpu.CompatibilityList
 import org.tensorflow.lite.support.image.ImageProcessor
 import org.tensorflow.lite.support.image.TensorImage
@@ -33,7 +19,6 @@ class ObjectDetectorHelperClass(
     var numThreads: Int = 2,
     var maxResults: Int = 1,
     var currentDelegate: Int = 0,
-    var currentModel: Int = 0,
     val context: Context,
     val objectDetectorListener: DetectorListener?
 ) {
@@ -106,8 +91,6 @@ class ObjectDetectorHelperClass(
         var inferenceTime = SystemClock.uptimeMillis()
 
         // Create preprocessor for the image.
-        // See https://www.tensorflow.org/lite/inference_with_metadata/
-        //            lite_support#imageprocessor_architecture
         val imageProcessor =
             ImageProcessor.Builder()
                 .add(Rot90Op(-imageRotation / 90))
@@ -139,9 +122,5 @@ class ObjectDetectorHelperClass(
         const val DELEGATE_CPU = 0
         const val DELEGATE_GPU = 1
         const val DELEGATE_NNAPI = 2
-        const val MODEL_MOBILENETV1 = 0
-        const val MODEL_EFFICIENTDETV0 = 1
-        const val MODEL_EFFICIENTDETV1 = 2
-        const val MODEL_EFFICIENTDETV2 = 3
     }
 }
