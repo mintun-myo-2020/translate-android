@@ -117,8 +117,4 @@ class SavedActivity : AppCompatActivity() {
 
     }
 
-    override fun onPause() {
-        super.onPause()
-        overridePendingTransition(0, 0);
-    }
 }
